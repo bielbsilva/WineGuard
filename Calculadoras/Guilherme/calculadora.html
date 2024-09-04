@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+</head>
+<body>
+    A quantidade de barricas utilizadas: 
+    <br>
+    <input type="number" id="input_qtdBarricas">
+    <br><br>
+
+    O valor médio de cada barrica: 
+    <br>
+    <input type="number" id="input_valorMedioBarrica">
+    <br><br>
+
+    Quantidade de garrafas  produzidas 
+    <br>
+    <input type="number" id="input_qtdGarrafas">
+    <br><br>
+
+    Custo de produção da garrafa de vinnho
+    <br>
+    <input type="number" id="input_custoMedioGarrafa">
+    <br><br>
+
+    Preço de venda por garrafa
+    <br>
+    <input type="text" id="input_precoDeVendaGarrafa">
+    <br><br>
+
+    Insira a porcentagem da perda:
+    <br>
+    <input type="text" id="input_porcentagemPerda">
+    <br><br>
+
+    <button onclick="calculo()"> Calcular </button>
+    <br><br>
+    <div id="div_mensagem"></div>
+
+
+
+</body>
+</html>
+
+<script>
+
+    
+    function calculo(){
+        var qtdBarricas = Number(input_qtdBarricas.value);
+        var valorMedioBarrica = Number(input_valorMedioBarrica.value);
+        var qtdGarrafasProduzidas = Number(input_qtdGarrafas.value);
+        var custoMedioGarrafa = Number(input_custoMedioGarrafa.value);
+        var precoDeVendaGarrafa = Number(input_precoDeVendaGarrafa.value);
+        var porcentagemPerda = Number(input_porcentagemPerda.value) ;
+
+        var custoTotalBarricas = valorMedioBarrica * qtdBarricas;
+        var custoTotalProducaoGarrafas = qtdGarrafasProduzidas * custoMedioGarrafa;
+
+        var perdaPotencialProducao = ((porcentagemPerda/ 100) *  qtdGarrafasProduzidas) * precoDeVendaGarrafa;
+        var perdaTotal = perdaPotencialProducao + custoTotalBarricas;
+
+        var lucroSemPRejuizo = qtdGarrafasProduzidas * precoDeVendaGarrafa
+
+        var mensagem = div_mensagem;
+
+        mensagem.innerHTML = `Considerando sua porcentagem de perda de ${porcentagemPerda}%, você possui um perda potencial na produção de R$${perdaPotencialProducao}<br><br>
+            Somando seus custos com barricas Perda total de R$${perdaTotal} <br><br>
+            Seu lucro utilizando nosso monitoramento pode chegar há R$${lucroSemPRejuizo}<br><br>Seu Lucro sem o nosso monitoramento pode ser de R$${lucroSemPRejuizo - perdaTotal}
+
+        `;
+
+    }
+
+</script>
+
