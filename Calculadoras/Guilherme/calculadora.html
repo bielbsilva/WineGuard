@@ -1,78 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador</title>
 </head>
+
 <body>
-    A quantidade de barricas utilizadas: 
-    <br>
+    <b>Quantidade total de barricas na adega:</b><br>
     <input type="number" id="input_qtdBarricas">
     <br><br>
 
-    O valor médio de cada barrica: 
-    <br>
-    <input type="number" id="input_valorMedioBarrica">
+    <b>Capacidade média de cada barrica (em litros):</b><br>
+    <input type="number" id="input_litragemBarrica">
     <br><br>
 
-    Quantidade de garrafas  produzidas 
-    <br>
-    <input type="number" id="input_qtdGarrafas">
+    <b>Capacidade de cada garrafa (em mL):</b><br>
+    <input type="number" id="input_capacidadeGarrafa">
     <br><br>
 
-    Custo de produção da garrafa de vinnho
-    <br>
-    <input type="number" id="input_custoMedioGarrafa">
-    <br><br>
-
-    Preço de venda por garrafa
-    <br>
+    <b>Preço de venda por garrafa (R$):</b><br>
     <input type="text" id="input_precoDeVendaGarrafa">
     <br><br>
 
-    Insira a porcentagem da perda:
-    <br>
+    <b>Porcentagem estimada de perda (%):</b><br>
     <input type="text" id="input_porcentagemPerda">
     <br><br>
 
-    <button onclick="calculo()"> Calcular </button>
+    <b>Período de produção (em meses):</b><br>
+    <input type="number" id="input_periodoDeProducao">
     <br><br>
+
+    <button onclick="calcular()">Calcular Impacto Financeiro</button>
+    <br><br>
+
     <div id="div_mensagem"></div>
 
-
-
 </body>
+
 </html>
 
 <script>
-
-    
-    function calculo(){
+    function calcular() {
         var qtdBarricas = Number(input_qtdBarricas.value);
-        var valorMedioBarrica = Number(input_valorMedioBarrica.value);
-        var qtdGarrafasProduzidas = Number(input_qtdGarrafas.value);
-        var custoMedioGarrafa = Number(input_custoMedioGarrafa.value);
+        var litragemBarrica = Number(input_litragemBarrica.value);
+        var litragemGarrafa = Number(input_capacidadeGarrafa.value);
         var precoDeVendaGarrafa = Number(input_precoDeVendaGarrafa.value);
-        var porcentagemPerda = Number(input_porcentagemPerda.value) ;
+        var porcentagemPerda = Number(input_porcentagemPerda.value);
+        var periodo = Number(input_periodoDeProducao.value);
 
-        var custoTotalBarricas = valorMedioBarrica * qtdBarricas;
-        var custoTotalProducaoGarrafas = qtdGarrafasProduzidas * custoMedioGarrafa;
+        var qtdGarrafasProduzidas = (qtdBarricas * litragemBarrica) / (litragemGarrafa / 1000);
+        var perdaPotencialProducao = ((porcentagemPerda / 100) * qtdGarrafasProduzidas) * precoDeVendaGarrafa;
 
-        var perdaPotencialProducao = ((porcentagemPerda/ 100) *  qtdGarrafasProduzidas) * precoDeVendaGarrafa;
-        var perdaTotal = perdaPotencialProducao + custoTotalBarricas;
+        var lucroSemPrejuizo = (qtdGarrafasProduzidas * precoDeVendaGarrafa);
+        var lucroComPrejuizo = (lucroSemPrejuizo - perdaPotencialProducao);
 
-        var lucroSemPRejuizo = qtdGarrafasProduzidas * precoDeVendaGarrafa
+        var lucroNoPeriodo = lucroSemPrejuizo / periodo;
+        var prejuizoNoPeriodo = lucroComPrejuizo / periodo;
 
         var mensagem = div_mensagem;
 
-        mensagem.innerHTML = `Considerando sua porcentagem de perda de ${porcentagemPerda}%, você possui um perda potencial na produção de R$${perdaPotencialProducao}<br><br>
-            Somando com o custo das barricas que é de R$${custoTotalBarricas}, sua Perda total pode chegar há R$${perdaTotal} <br><br>
-            Seu lucro utilizando nosso monitoramento pode chegar há R$${lucroSemPRejuizo}<br><br>Seu Lucro sem o nosso monitoramento pode chegar há R$${lucroSemPRejuizo - perdaTotal}
+        var calculo = lucroNoPeriodo - prejuizoNoPeriodo;
+
+
+        mensagem.innerHTML = `
+            <h1>Evite Perdas Desnecessárias</h1>
+            <p>Atualmente, você está perdendo <b>${porcentagemPerda}%</b> da sua produção, o que representa 
+            <b style="color:red;">R$${perdaPotencialProducao}</b> em prejuízos.</p>
+
+            <h3>Transforme Perdas em Lucro com o Monitoramento da WineGuard</h3>
+            <p>Com nosso sistema de monitoramento, em <b>${periodo}</b> meses, você pode aumentar seus lucros para até 
+            <b style="color:green;">R$${lucroNoPeriodo}</b> por mês.</p>
+            <p>A WineGuard monitora suas adegas em tempo real, prevenindo perdas e garantindo um ambiente ideal para o envelhecimento do vinho.</p>
+
+            <h3>O Custo da Inatividade</h3>
+            <p>Sem o monitoramento da WineGuard, suas perdas continuarão a crescer, e você pode estar deixando de lucrar 
+            <b style="color:red;">R$${prejuizoNoPeriodo}</b> por mês.</p>
+
+            <h3>A Diferença no Seu Faturamento</h3>
+            <p>Ao investir no monitoramento da WineGuard, você não apenas protege sua produção, mas também garante um aumento de 
+            <b style="color:green;">R$${calculo}</b> mensais no seu lucro.</p>
+            <p>Em <b>${periodo}</b> meses, seu lucro acumulado pode alcançar até 
+            <b style="color:green;">R$${lucroSemPrejuizo}</b>.</p>
 
         `;
-
     }
-
 </script>
-
