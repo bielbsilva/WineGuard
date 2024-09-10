@@ -32,14 +32,14 @@ CREATE TABLE SensorTemperatura(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     localizacao VARCHAR(50),
     dtLeitura DATETIME,
-    temperatura_atual INT
+    temperatura_atual FLOAT(5,2)
 );
 
 CREATE TABLE SensorUmidade(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     localizacao VARCHAR(50),
     dtLeitura DATETIME,
-    umidade_atual INT
+    umidade_atual FLOAT(5,2)
 );
 
 CREATE TABLE contatoCliente(
@@ -75,30 +75,32 @@ INSERT INTO alerta VALUES
 	(DEFAULT, '2024-09-10 17:00:00', 'Umidade', 'Aberto', 'Alta')
 ;
 
-INSERT INTO sensorTemperatura VALUES
-	(DEFAULT, 'Sala 1', '2024-09-01 08:30:00', 15),
-	(DEFAULT, 'Sala 2', '2024-08-20 09:00:00', 12),
-	(DEFAULT, 'Sala 3', '2024-01-12 10:00:00', 21),
-	(DEFAULT, 'Sala 4', '2023-04-05 11:00:00', 22),
-	(DEFAULT, 'Sala 5', '2023-09-25 12:00:00', 6),
-	(DEFAULT, 'Sala 6', '2022-01-20 13:00:00', 24),
-	(DEFAULT, 'Sala 7', '2022-12-01 14:00:00', 32),
-	(DEFAULT, 'Sala 8', '2020-02-11 15:00:00', 23),
-	(DEFAULT, 'Sala 9', '2020-08-15 16:00:00', 21),
-	(DEFAULT, 'Sala 10', '2020-12-01 17:00:00', 22)
+INSERT INTO SensorTemperatura (localizacao, dtLeitura, temperatura_atual)
+VALUES 
+    ('Sala 1', '2024-09-01 08:00:00', 22.50),
+    ('Sala 2', '2024-09-01 08:05:00', 24.30),
+    ('Sala 3', '2024-09-01 08:10:00', 21.75),
+    ('Sala 4', '2024-09-01 08:15:00', 23.10),
+    ('Sala 5', '2024-09-01 08:20:00', 22.00),
+    ('Sala 6', '2024-09-01 08:25:00', 22.85),
+    ('Sala 7', '2024-09-01 08:30:00', 25.00),
+    ('Sala 8', '2024-09-01 08:35:00', 26.10),
+    ('Sala 9', '2024-09-01 08:40:00', 21.50),
+    ('Sala 10', '2024-09-01 08:45:00', 27.00)
 ;
 
-INSERT INTO sensorUmidade VALUES
-	(DEFAULT, 'Sala 1', '2024-08-11 08:30:00', 95),
-	(DEFAULT, 'Sala 2', '2024-06-10 09:00:00', 86),
-	(DEFAULT, 'Sala 3', '2024-03-01 10:00:00', 74),
-	(DEFAULT, 'Sala 4', '2022-12-25 11:00:00', 75),
-	(DEFAULT, 'Sala 5', '2022-09-01 12:00:00', 67),
-	(DEFAULT, 'Sala 6', '2021-11-11 13:00:00', 58),
-	(DEFAULT, 'Sala 7', '2021-07-10 14:00:00', 56),
-	(DEFAULT, 'Sala 8', '2021-03-20 15:00:00', 57),
-	(DEFAULT, 'Sala 9', '2020-09-01 16:00:00', 65),
-	(DEFAULT, 'Sala 10', '2019-09-01 17:00:00', 76)
+INSERT INTO SensorUmidade (localizacao, dtLeitura, umidade_atual)
+VALUES 
+    ('Sala 1', '2024-09-01 08:00:00', 45.00),
+    ('Sala 2', '2024-09-01 08:05:00', 50.50),
+    ('Sala 3', '2024-09-01 08:10:00', 40.75),
+    ('Sala 4', '2024-09-01 08:15:00', 55.10),
+    ('Sala 5', '2024-09-01 08:20:00', 42.00),
+    ('Sala 6', '2024-09-01 08:25:00', 48.85),
+    ('Sala 7', '2024-09-01 08:30:00', 50.00),
+    ('Sala 8', '2024-09-01 08:35:00', 43.10),
+    ('Sala 9', '2024-09-01 08:40:00', 44.50),
+    ('Sala 10', '2024-09-01 08:45:00', 52.00)
 ;
 
 INSERT INTO contatoCliente VALUES
