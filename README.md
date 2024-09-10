@@ -3,8 +3,8 @@
 
 # 🛠️ Ferramentas utilizadas
   • Para a criação do protótipo do [site](https://www.figma.com/design/PClaMrGiZSulzj4Wc8izj3/Untitled?node-id=0-1&node-type=CANVAS) fou utilizado o [figma](https://www.figma.com/). <br>
-  • <br>
-  • <br>
+  • O simulador financeiro, foi cunstruido utilizando HTML e JavaScript<br>
+  • O monitoramento é feito através de sensores (DHT 11 para a umidade e LM 35 para temperatura), controlados por um Arduino UNO R3.<br>
   • <br>
 
 # ✒️ Autores
