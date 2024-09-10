@@ -12,3 +12,5 @@
   • [Victor Trevisan](https://github.com/gitVictorTrevisan) <br>
   • [Thiago Galvão](https://github.com/ThGalvaon) <br>
   • [Cainã Gomes](https://github.com/cainaGomesDS) <br>
+  • [João Vitor Luz](https://github.com/vitorluzz) <br>
+  • [Mateus Roque](https://github.com/mateussroque) <br>
