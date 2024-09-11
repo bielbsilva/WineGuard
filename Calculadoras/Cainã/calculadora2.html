@@ -23,7 +23,7 @@
     <br><br>
     Insira a umidade (%): <input type="text" id="input_umidade">
     <br><br>
-    <button onclick="calculo()">Fazer a simulação</button>
+    <button onclick="calculo()">Simular o financeiro</button>
     <br><br>
     <div id="div_mensagem"></div>
 </body>
@@ -69,11 +69,6 @@
         var perdaTotal = tempPerdaQualidade + umidadePerdaQualidade;
         var perdaTotalDaVenda = calculoVendaTotalDeUmaBarrica / perdaTotal
 
-        // var textoResultado =
-        //  perdaTotal > 0 ? `A perda de qualidade é de ${perdaTotal}% por ano.` : "As condições estão ideais e não há perda de qualidade.";
-
-        // resultado.innerHTML = textoResultado
-        // var porcentagemPerdaTemperatura
 
         div_mensagem.innerHTML =
             `Quantidade de garrafas dentro da barrica de ${litroDaBarrica} litros é ${calculoQtdGarrafasNaBarrica} garrafas.
